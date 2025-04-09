@@ -1,4 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <properties>
+    <configuration-include46>**/MyFileDownloader.java</configuration-include46>
+    <configuration-include>**/MyFileDownloader.java</configuration-include>
+  </properties>
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>AutoIT</groupId>
   <artifactId>AutoIT</artifactId>
@@ -97,27 +102,26 @@
       <artifactId>maven-compiler-plugin</artifactId>
       <version>3.14.0</version>
       <configuration>
-        <source>17</source> <!-- Adjusted to Java 17 for better compatibility -->
-        <target>17</target>
+  <release>17</release>
       </configuration>
     </plugin>
 
     <!-- Maven Surefire Plugin (For Running Tests) -->
     <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.5.2</version>
-      <configuration>
-        <includes>
-          <include>**/MyFileDownloader.java</include>
-        </includes>
-        <suiteXmlFiles>
-          <suiteXmlFile>testng.xml</suiteXmlFile>
-        </suiteXmlFiles>
-      </configuration>
-    </plugin>
-
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <version>3.5.2</version>
+  <configuration>
+    <includes>
+      <include>**/MyFileDownloader*</include> <!-- Optional if test follows naming convention -->
+    </includes>
+    <suiteXmlFiles>
+      <suiteXmlFile>testng.xml</suiteXmlFile>
+    </suiteXmlFiles>
+  </configuration>
+</plugin>
   </plugins>
+
 </build>
 
 </project>

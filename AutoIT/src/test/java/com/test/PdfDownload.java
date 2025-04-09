@@ -35,7 +35,7 @@ public class PdfDownload {
 			System.out.println("file downloaded");
 		}
 		else {
-			System.out.println("fiel not downloaded");
+			System.out.println("file not downloaded");
 		}
 		driver.quit();
 	}
