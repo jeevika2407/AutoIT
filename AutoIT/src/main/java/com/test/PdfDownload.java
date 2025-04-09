@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
+//import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class PdfDownload {
-	@Test
     public static void main(String[] args) throws InterruptedException {
     	String downloadFilePath=System.getProperty("user.dir")+File.separator+"downloads";
 		ChromeOptions option =new ChromeOptions();

@@ -1,26 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <properties>
-    <configuration-include46>**/MyFileDownloader.java</configuration-include46>
-    <configuration-include>**/MyFileDownloader.java</configuration-include>
-  </properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>AutoIT</groupId>
   <artifactId>AutoIT</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
+  <properties>
+    <!-- Custom properties, remove if unused -->
+    <configuration-include>**/MyFileDownloader.java</configuration-include>
+  </properties>
+
   <dependencies>
-    <!-- Cucumber Dependencies -->
+    <!-- ✅ Cucumber Dependencies -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>7.21.1</version>
     </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-testng</artifactId>
-      <version>7.21.1</version>
-    </dependency>
+
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
@@ -28,37 +27,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Selenium Dependency -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>4.30.0</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
-<dependency>
-    <groupId>org.apache.pdfbox</groupId>
-    <artifactId>pdfbox</artifactId>
-    <version>3.0.4</version>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.18.0</version>
-</dependency>
-
-    <!-- TestNG Dependency -->
-
-<dependency>
-  <groupId>org.testng</groupId>
-  <artifactId>testng</artifactId>
-  <version>7.11.0</version>
-  <scope>test</scope>
-</dependency>
-
-    <!-- JUnit (For Compatibility) -->
+    <!-- ✅ JUnit -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -66,62 +35,73 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Cucumber Reporting -->
+    <!-- ✅ Selenium -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.30.0</version>
+    </dependency>
+
+    <!-- ✅ Apache PDFBox -->
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>3.0.4</version>
+    </dependency>
+
+    <!-- ✅ Commons IO -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+
+    <!-- ✅ Cucumber Reporting -->
     <dependency>
       <groupId>net.masterthought</groupId>
       <artifactId>cucumber-reporting</artifactId>
       <version>5.7.6</version>
     </dependency>
 
-    <!-- Extent Reports -->
+    <!-- ✅ Extent Reports -->
     <dependency>
       <groupId>tech.grasshopper</groupId>
       <artifactId>extentreports-cucumber7-adapter</artifactId>
       <version>1.9.1</version>
     </dependency>
+
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>5.0.9</version>
     </dependency>
 
-    <!-- SLF4J (Logger to Avoid Warnings) -->
+    <!-- ✅ SLF4J -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.9</version>
     </dependency>
-    
   </dependencies>
 
- <build>
-  <plugins>
-    <!-- Maven Compiler Plugin -->
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.14.0</version>
-      <configuration>
-  <release>17</release>
-      </configuration>
-    </plugin>
-
-    <!-- Maven Surefire Plugin (For Running Tests) -->
-    <plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-surefire-plugin</artifactId>
-  <version>3.5.2</version>
-  <configuration>
-    <includes>
-      <include>**/MyFileDownloader*</include> <!-- Optional if test follows naming convention -->
-    </includes>
-    <suiteXmlFiles>
-      <suiteXmlFile>testng.xml</suiteXmlFile>
-    </suiteXmlFiles>
-  </configuration>
-</plugin>
-  </plugins>
-
-</build>
-
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- 🔄 Only one class can be specified here at a time -->
+          <mainClass>com.test.PdfDownload</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
